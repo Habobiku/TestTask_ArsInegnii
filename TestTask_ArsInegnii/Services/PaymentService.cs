@@ -4,17 +4,16 @@ using TestTask_ArsInegnii.Interfaces;
 
 namespace TestTask_ArsInegnii.Services
 {
-	public class PaymentService:IPaymentService
-	{
+    public class PaymentService : IPaymentService
+    {
         public decimal Balance { get; private set; }
 
-        public decimal Withdraw(decimal money)
+        public decimal Withdraw(decimal money)//param money is cost of product
         {
             if (!HasSufficientFunds(money))
             {
                 throw new Exception($"Out of balance! You are missing {money - Balance} funds.");
             }
-
             Balance -= money;
             return Balance;
         }
@@ -27,7 +26,6 @@ namespace TestTask_ArsInegnii.Services
 
         public decimal Deposit(Coin coin) => Balance += coin.Value;
         private bool HasSufficientFunds(decimal money) => Balance >= money;
-       
     }
 }
 

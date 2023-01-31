@@ -23,6 +23,7 @@ namespace TestTask_ArsInegnii.Models
         public List<Coin> ChangeMoney()
         {
             var change = _paymentService.RefundMoney();
+            //clearing deposit and returning the change to user
             return _coinDispencer.GiveChange(change);
         }
         public decimal InsertMoney(Coin coin)
@@ -34,7 +35,6 @@ namespace TestTask_ArsInegnii.Models
         public decimal Balance => _paymentService.Balance;
         public List<Coin> Coins => _coinDispencer.Coins;
         public IItem DispenseItem(IItem item) => _dispenseService.DispenseItem(item);
-
     }
 }
 

@@ -46,7 +46,6 @@ namespace TestTask_ArsInegnii.Models
             return Equals((Item)obj);
         }
         public override int GetHashCode() => HashCode.Combine(Name);
-
     }
 }
 

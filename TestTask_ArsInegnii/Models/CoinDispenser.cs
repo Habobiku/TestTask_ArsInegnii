@@ -19,9 +19,9 @@ namespace TestTask_ArsInegnii.Models
             {
                 throw new Exception("No coins available to give change");
             }
-            var change = new List<Coin>();
-            var coinsOrdering = Coins.OrderByDescending(c => c.Value).ToList();
-            var changeRound = Math.Round(amount * 2, MidpointRounding.AwayFromZero) / 2;
+            var change = new List<Coin>();//creaete a list of coin to give customer
+            var coinsOrdering = Coins.OrderByDescending(c => c.Value).ToList();//sort list for greedy algorithm 
+            var changeRound = Math.Round(amount * 2, MidpointRounding.AwayFromZero) / 2; //round of change 
 
             foreach (var coin in coinsOrdering)
             {
@@ -38,7 +38,7 @@ namespace TestTask_ArsInegnii.Models
             }
             return change;
         }
-        public void AddCountedCoins(int[] count)
+        public void AddCountedCoins(int[] count) 
         {
             Coins.AddRange(Enumerable.Repeat(new TwoEuros(), count[0]));
             Coins.AddRange(Enumerable.Repeat(new OneEuros(), count[1]));

@@ -2,7 +2,7 @@
 
 [TestClass]
 public class VendingMachineUnitTests
-{ 
+{
     [TestMethod]
     public void InsertMoney_UpdateBalanceAndCoins()
     {
@@ -44,7 +44,7 @@ public class VendingMachineUnitTests
     public void OrderItem_Dispence()
     {
         var insertCoins = new TwoEuros();
-        var expectedItem = new Item("Coca Cola",1);
+        var expectedItem = new Item("Coca Cola", 1);
 
         var paymentService = new PaymentService();
         var coinDispenser = new CoinDispenser();
@@ -69,10 +69,10 @@ public class VendingMachineUnitTests
         var storage = new Storage();
         var dispenseService = new DispenseService(storage, paymentService);
         var vendingMachine = new VedingMachine(storage, paymentService, dispenseService, coinDispenser);
-        storage.Add(expectedItem,0);
+        storage.Add(expectedItem, 0);
         vendingMachine.InsertMoney(insertCoins);
 
-        Assert.ThrowsException<Exception>(()=>vendingMachine.DispenseItem(expectedItem));
+        Assert.ThrowsException<Exception>(() => vendingMachine.DispenseItem(expectedItem));
     }
     [TestMethod]
     public void OrderItem_NotEnoughMoney_ShouldThrowExeption()
